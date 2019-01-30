@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuck Norris | API Requests with AJAX</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <style>
+        body { padding-top:50px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">Chuck Norris once said - </div>
+            <div class="panel-body text-center">
+                <img src="" id="icon">
+                <p id="quote"></p>
+            </div>
+            <div class="panel-footer">
+                <p><a href="" id="url" target="_blank">Link to quote</a></p>
+                <div class="text-right">
+                    <button class="btn btn-primary" onclick="newQuote()">GET A NEW QUOTE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function newQuote(){
+            //the url we are making a request to
+            var url = "https://api.chucknorris.io/jokes/random?category=dev";
+
+            $.ajax({
+                url: url,
+                method: 'get',
+                success: function(data){
+                    //do something when call is successful
+                    console.log(data);
+                    $('#quote').text(data.value);
+                    $('#url').attr('href', data.url);
+                    $('#icon').attr('src', data.icon_url);
+                }, 
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        }
+
+        $(document).ready(function(){
+            newQuote();
+            $('button').on('click', newQuote());
+        });
+
+    </script>
+</body>
+</html>
