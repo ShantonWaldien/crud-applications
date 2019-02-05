@@ -5,14 +5,13 @@ var Pokemon = require('../db.json');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {title: "All Pokemon"});
-
+  res.render('index', {title: "Pokemon"});
 });
 
 router.get('/', function (req, res, next) {
 
     let data = {
-        title: 'All Pokemon',
+        title: 'Pokemon',
         pokemon: Pokemon, 
         message: false,
     }

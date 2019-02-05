@@ -15,9 +15,9 @@
 <body>
 
     <div class="container">
-        <!-- <% if (title) { %>
+        
             <h2><%= title %></h2>
-        <% } %> -->
+        
         <div class="panel panel-danger">
             <div class="panel panel-heading text-center">
                 <h1>It's Hero Time.</h1>
@@ -38,19 +38,6 @@
                         </div>
                     </div> 
                 </a>
-
-        
-                
-                    <div class="col-xs-6 col-md-2">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                
-                            </div>
-                            <div class="panel-footer">
-                               
-                            </div>
-                        </div>
-                    </div> 
                 
 
             </div>
@@ -59,6 +46,57 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+        //targeting my container
+        var box = document.getElementById('all');
+       
+        //the url we are making a request to
+        var url = "http://localhost:8000/pokemon";
+       
+        $.ajax({
+            url: url,
+            method: 'get',
+            success: function(data){
+                //do something when call is successful
+                // console.log(data);
+       
+                $.each(data, function(index, value){
+       
+                    var container = document.createElement('div');
+                    container.className = 'col-xs-6 col-md-2';
+       
+                    var panel = document.createElement('div');
+                    panel.className = 'panel panel-default';
+       
+                    var body = document.createElement('div');
+                    body.className = "panel-body";
+       
+                    var footer = document.createElement('div');
+                    footer.className = 'panel-footer';
+       
+                    var image = document.createElement('IMG');
+                    image.setAttribute('src', value.image);
+       
+                    var name = document.createTextNode(value.name);
+       
+                    footer.appendChild(name);
+                    body.appendChild(image);
+                    panel.appendChild(body);
+                    panel.appendChild(footer);
+                    container.appendChild(panel);
+       
+                    box.appendChild(container);
+       
+                });
+       
+            },
+            error: function(error){
+                console.log(error);
+            }
+        });
+       </script>
 
 </body>
 </html>
