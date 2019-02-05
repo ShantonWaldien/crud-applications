@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <style>
-        body { padding-top:15px; background-color: #ccc;}
+        body { padding-top:150px; background-color: #ccc;}
         img { width: 100%;}
     </style>
 </head>
@@ -24,11 +24,7 @@
             </div>
             <div class="panel-body" id="all">
 
-                <% if (message) { %>
-                    <div class="alert alert-success" role="alert">
-                        <%= message %>
-                    </div>
-                <% } %> 
+            
 
                 <a href="/create">
                     <div class="col-xs-6 col-md-2">
@@ -43,20 +39,19 @@
                     </div> 
                 </a>
 
-                <% pokemon.pokemon.forEach(function(poke){ %>
-                    <a href="/view/<%-poke.id %>">
-                        <div class="col-xs-6 col-md-2">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <img src="<%-poke.image %>">
-                                </div>
-                                <div class="panel-footer">
-                                    <%-poke.name %>
-                                </div>
+        
+                
+                    <div class="col-xs-6 col-md-2">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                
                             </div>
-                        </div> 
-                    </a>
-                <% }); %>   
+                            <div class="panel-footer">
+                               
+                            </div>
+                        </div>
+                    </div> 
+                
 
             </div>
             <div class="panel-footer text-center">
